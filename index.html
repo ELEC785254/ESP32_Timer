@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!-- 2025/05/14 ver1.0.2 -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>TT-C8W</title>
+    <style>
+        #headrTable,
+        #timeTable,
+        #CTable,
+        #headrTable td,
+        #timeTable td,
+        #CTable td,
+        #headrTable th,
+        #timeTable th {
+            border-collapse: collapse;
+            border: 1px solid #c7c7c7;
+        }
+
+        #headrTable,
+        #timeTable,
+        #CTable {
+            table-layout: fixed;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #headrTable td,
+        #timeTable td,
+        #CTable td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        #colIndex {
+            width: 3em;
+            cursor: pointer;
+        }
+
+        #colTime {
+            width: 7em;
+        }
+
+        #headrTable thead th,
+        #timeTable thead th {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(to top, #b6e2fc, #ffffff);
+            z-index: 1;
+            font-weight: normal;
+        }
+
+        #headrTable tr td:hover {
+            position: relative;
+            margin: 20px;
+            cursor: cell;
+        }
+
+        #timeTable tr td:hover {
+            position: relative;
+            margin: 20px;
+            cursor: cell;
+        }
+
+        #ESPtime {
+            width: 9em;
+            background: linear-gradient(to top, #ffffff, #b6e2fc, #ffffff);
+            font-size: 95%;
+            /*font-family: "Times New Roman";*/
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        #Sun {
+            color: #ff0808;
+        }
+
+        #Sat {
+            color: #0808ff;
+        }
+
+        #naviForm {
+            position: absolute;
+            background: rgba(240, 240, 240, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            display: none;
+        }
+
+        #title {
+            text-align: center;
+            text-decoration: none;
+        }
+
+        #OKCANCEL {
+            text-align: right;
+        }
+
+        #p,
+        #t,
+        #c,
+        #f,
+        #M1,
+        #M2,
+        #M3,
+        #M4,
+        #M5 {
+            display: none;
+        }
+
+        #MTable {
+            width: 350px;
+            border: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #CTable {
+            table-layout: fixed;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #CTable td {
+            cursor: pointer;
+        }
+
+        a:link {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        a:visited {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #0000FF;
+        }
+    </style>
+</head>
+
+<body style="background-color: #FFFFFF;" text="#000000">
+    <table id="headrTable">
+        <thead>
+            <tr id="headrTh">
+                <th id="ESPtime" rowspan="2">----/--/--<BR>--:--:--</th>
+                <th id="Sun">Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th id="Sat">Sat</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <BR>
+    <table id="timeTable">
+        <thead>
+            <tr>
+                <th id="colIndex"></th>
+                <th id="colTime">TIME</th>
+                <th>OUT1</th>
+                <th>OUT2</th>
+                <th>OUT3</th>
+                <th>OUT4</th>
+                <th>OUT5</th>
+                <th>OUT6</th>
+                <th>OUT7</th>
+                <th>OUT8</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <form id="naviForm">
+        <DIV id="title"></DIV>
+        <BR>
+        <DIV id="p">
+            <input id="patternCopy" type="button" value="Copy" style="width:100px;" onClick="Copyclick()">
+            <input id="patternPaste" type="button" value="Paste" style="width:100px;" disabled=”false”
+                onClick="Pasteclick()"><BR>
+            <select id="pSelect"></select>
+        </DIV>
+        <DIV id="t">
+            <input id="time" type="time" step="1" value="00:00:00" style="width:100px;">
+            <input id="actDelete" type="button" value="削除" style="width:100px;" onClick="OKclickActDelete()">
+        </DIV>
+        <DIV id="c">
+            <input type="radio" name="cout" value="0"><BR>
+            <input type="radio" name="cout" value="1">PLS<BR>
+            <input type="radio" name="cout" value="2">ON<BR>
+            <input type="radio" name="cout" value="3">OFF<BR>
+        </DIV>
+        <DIV id="f">
+            <a href="#" id="fileLinkOpen">開く</a><input type="file" id="fileOpen" accept=".xml"
+                style="display: none;"><BR>
+            <a href="#" id="fileLinkSave">保存</a><BR>
+            <a href="#" id="fileLinkUpload">アップロード</a><BR>
+            <a href="#" id="fileLinkDownload">ダウンロード</a><BR>
+        </DIV>
+        <DIV id="M1">
+            <table id="MTable">
+                <thead>
+                    <tr>
+                        <th><input id="M1date" type="date" min="2020-01-01" value="2020-01-01"></th>
+                        <th><input id="M1time" type="time" step="1" value="00:00:00"></th>
+                        <th><input type="button" value="更新" style="width:100px;" onClick="OKclickESPTimeSet()"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </DIV>
+        <DIV id="M2">
+            <table id="MTable">
+                <thead>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center">NTPサーバー</td>
+                        <td><input id="M2NTP" type="text" style="width:150px;" value="ntp.nict.jp"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="更新" style="width:100px;" onClick="OKclickNTPSet()"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </DIV>
+        <DIV id="M3">
+            <table id="MTable">
+                <thead>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center">AP SSID</td>
+                        <td><input id="M3APSSID" type="text" value="TT-C8W"></td>
+                    </tr>
+                    <tr>
+                        <td align="center">AP PASS</td>
+                        <td><input id="M3APPASS" type="text" value="12345678"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="更新" style="width:120px;" onClick="OKclickAPSet()"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </DIV>
+        <DIV id="M4">
+            <table id="MTable">
+                <thead>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center">ST SSID</td>
+                        <td><input id="M4STSSID" type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td align="center">ST PASS</td>
+                        <td><input id="M4STPASS" type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="更新" style="width:120px;" onClick="OKclickSTSet()"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </DIV>
+        <DIV id="M5">
+            <table id="CTable">
+                <thead>
+                    <tr>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                    </tr>
+                    <tr>
+                        <td id="C1">-</td>
+                        <td id="C2">-</td>
+                        <td id="C3">-</td>
+                        <td id="C4">-</td>
+                        <td id="C5">-</td>
+                        <td id="C6">-</td>
+                        <td id="C7">-</td>
+                        <td id="C8">-</td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </DIV>
+        <BR>
+        <DIV id="OKCANCEL">
+            <input type="button" value="OK" style="width:100px;" onClick="OKclick()" />
+            <input type="button" value="CANCEL" style="width:100px;" onClick="CANCELclick()" />
+        </DIV>
+    </form>
+
+    <script>
+        let ws = null;
+        WSConnect();
+
+        function WSConnect() {
+            if (location.hostname === "") {
+                console.log('local location');
+                return;
+            }
+
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                return;
+            }
+
+            ws = new WebSocket("ws://" + location.hostname + "/ws");
+
+            ws.onopen = () => {
+                console.log('WebSocket connect');
+            };
+
+            ws.onclose = () => {
+                GELID('ESPtime').innerText = '----/--/--\n--:--:--';
+                ws = null;
+                console.log('WebSocket Desconnect');
+                alert("切断されました");
+            };
+
+            ws.onmessage = (event) => {
+                if (event.data instanceof Blob) {
+                    console.log('Blob size:', event.data.size);
+                    event.data.arrayBuffer().then(buffer => {
+                        const byteArray = new Uint8Array(buffer);
+                        DownloadBuf2Schedule(byteArray);
+                    });
+                    return;
+                }
+
+                const espHeader = 'esp:';
+                let espData = '';
+                for (let i = 0; i < espHeader.length; i++) {
+                    espData += event.data[i];
+                }
+
+                if (espHeader != espData) {
+                    console.log(`recv fail ESP:${espData}`);
+                    return;
+                }
+
+                espData = '';
+                for (let i = espHeader.length; i < espHeader.length + 2; i++) {
+                    espData += event.data[i];
+                }
+
+                let Value = '';
+                for (let i = espHeader.length + 2; i < event.data.length; i++) {
+                    Value += event.data[i];
+                }
+                console.log(Value);
+
+                switch (espData) {
+                    case '00':
+                        GELID('ESPtime').innerText = Value;
+                        CurrentMark();
+                        break;
+                    case '01':
+                        //console.log('case 01');
+                        break;
+                    case '02':
+                        //console.log('case 02');
+                        break;
+                    case '03':
+                        //console.log('case 03');
+                        GELID('C1').innerText = GetOutMark(event.data[6]);
+                        GELID('C2').innerText = GetOutMark(event.data[7]);
+                        GELID('C3').innerText = GetOutMark(event.data[8]);
+                        GELID('C4').innerText = GetOutMark(event.data[9]);
+                        GELID('C5').innerText = GetOutMark(event.data[10]);
+                        GELID('C6').innerText = GetOutMark(event.data[11]);
+                        GELID('C7').innerText = GetOutMark(event.data[12]);
+                        GELID('C8').innerText = GetOutMark(event.data[13]);
+                        break;
+                    case '50':
+                        //  NTP
+                        GELID('M2NTP').value = Value;
+                        break;
+                    case '60':
+                        //  AP SSID
+                        GELID('M3APSSID').value = Value;
+                        break;
+                    case '61':
+                        //  AP PASS
+                        GELID('M3APPASS').value = Value;
+                        break;
+                    case '70':
+                        //  ST SSID
+                        GELID('M4STSSID').value = Value;
+                        break;
+                    case '71':
+                        //  ST PASS
+                        GELID('M4STPASS').value = Value;
+                        break;
+                }
+
+                if (event.data instanceof ArrayBuffer) {
+                    console.log('ArrayBuffer size:', event.data.byteLength);
+                }
+            };
+
+            ws.onerror = (error) => {
+                console.log(event.message);
+            };
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+        function sendMessage(buf) {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(buf);
+            }
+        }
+
+        function GetOutMark(state) {
+            if (state == '1') { return '●'; } else { return '-' }
+        }
+
+        function GELID(id) {
+            return document.getElementById(id);
+        }
+
+        const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const TIME_ACT_MAX = 96;
+        const PATTERN_MAX = 32;
+        const FORM_TYPES = {
+            PATTERN_WEEK: 0,
+            PATTERN: 1,
+            TIME: 2,
+            ACTION: 3,
+            NAVI: 4
+        };
+
+        let program = Array.from({ length: PATTERN_MAX }, () =>
+            Array.from({ length: TIME_ACT_MAX }, () => ({
+                flg: 0,
+                time: 0,
+                C1: 0, C2: 0, C3: 0, C4: 0, C5: 0, C6: 0, C7: 0, C8: 0
+            }))
+        );
+        let programWeek = [1, 1, 1, 1, 1, 1, 1];
+
+        let headrTable = GELID('headrTable');
+        let timeTable = GELID('timeTable');
+        let naviForm = GELID('naviForm');
+
+        for (let i = 0; i < TIME_ACT_MAX; i++) {
+            let newRow = timeTable.insertRow(-1);
+            for (let j = 0; j < timeTable.rows[0].cells.length; j++) {
+                let cell = newRow.insertCell(-1);
+            }
+            newRow.cells[0].innerHTML = timeTable.rows.length - 1;
+        }
+
+        headrTable.rows[0].cells[0].onclick = ESPclicked;
+        for (let j = 0; j < headrTable.rows[1].cells.length; j++) {
+            headrTable.rows[1].cells[j].id = "H1-" + j;
+            headrTable.rows[1].cells[j].onclick = headrTableclicked;
+        }
+
+        timeTable.rows[0].cells[0].onclick = timeTableclicked;
+        for (let i = 1; i < timeTable.rows.length; i++) {
+            for (let j = 1; j < timeTable.rows[i].cells.length; j++) {
+                timeTable.rows[i].cells[j].id = i + "-" + j;
+                timeTable.rows[i].cells[j].onclick = timeTableclicked;
+            }
+        }
+
+        for (let i = 0; i < CTable.rows[0].cells.length; i++) {
+            CTable.rows[1].cells[i].onclick = CTableclicked;
+        }
+
+        let el = GELID('pSelect');
+        el.style.width = '100px';
+        for (let i = 0; i < PATTERN_MAX; i++) {
+            op = new Option('P' + i.toString(), i);
+            el.add(op);
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+        const form = document.getElementById('naviForm');
+        let offsetX, offsetY;
+
+        form.addEventListener('mousedown', (e) => {
+            offsetX = e.clientX - form.getBoundingClientRect().left;
+            offsetY = e.clientY - form.getBoundingClientRect().top;
+            document.addEventListener('mousemove', mouseMoveHandler);
+            document.addEventListener('mouseup', mouseUpHandler);
+        });
+
+        function mouseMoveHandler(e) {
+            form.style.left = `${e.clientX - offsetX}px`;
+            form.style.top = `${e.clientY - offsetY}px`;
+        }
+
+        function mouseUpHandler() {
+            document.removeEventListener('mousemove', mouseMoveHandler);
+            document.removeEventListener('mouseup', mouseUpHandler);
+        }
+
+        naviForm.style.display = "none";
+
+        GELID('fileLinkOpen').addEventListener('click', function (e) {
+            e.preventDefault();
+            GELID('fileOpen').click();
+        });
+
+        GELID('fileOpen').addEventListener('change', function (e) {
+            const file = this.files[0];
+            if (file) {
+                Load(file);
+                e.target.value = '';
+            }
+        });
+
+        GELID('fileLinkSave').addEventListener('click', function (e) {
+            e.preventDefault();
+            Save();
+        });
+
+        GELID('fileLinkUpload').addEventListener('click', function (e) {
+            e.preventDefault();
+            Upload();
+        });
+
+        GELID('fileLinkDownload').addEventListener('click', function (e) {
+            e.preventDefault();
+            Download();
+        });
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+        let progNum = 1;
+        let formType = null;
+        let idx = null;
+        let copyPattern = null;
+
+        tableRefresh();
+
+        function naviFormShow() {
+            if (naviForm.style.display == "none") {
+                switch (formType) {
+                    case FORM_TYPES.PATTERN_WEEK:
+                    case FORM_TYPES.PATTERN:
+                        CreatePatternForm();
+                        break;
+                    case FORM_TYPES.TIME:
+                        CreateTimeForm();
+                        break;
+                    case FORM_TYPES.ACTION:
+                        CreateActForm();
+                        break;
+                    case FORM_TYPES.NAVI:
+                        CreateNaviForm();
+                        break;
+                }
+
+                naviForm.style.display = "block";
+                centerNaviForm();
+
+                naviForm.addEventListener('blur', function () {
+                    naviFormHidden();
+                });
+
+                naviForm.focus();
+            }
+            else {
+                naviFormHidden();
+            }
+        }
+
+        function naviFormHidden() {
+            naviForm.style.display = "none";
+            resetFormElements();
+            let cells = headrTable.getElementsByTagName('td');
+            for (let cell of cells) {
+                cell.style.backgroundColor = 'white';
+            }
+            cells = timeTable.getElementsByTagName('td');
+            for (let cell of cells) {
+                cell.style.backgroundColor = 'white';
+            }
+            formType = null;
+            idx = null;
+            copyPattern = null;
+            GELID('patternPaste').disabled = true;
+        }
+
+        function resetFormElements() {
+            ['p', 't', 'c', 'f', 'M1', 'M2', 'M3', 'M4', 'M5'].forEach(id => {
+                GELID(id).style.display = "none";
+            });
+            GELID('OKCANCEL').style.display = 'block';
+        }
+
+        function centerNaviForm() {
+            naviForm.style.left = `${window.innerWidth / 2 - naviForm.offsetWidth / 2 + window.scrollX}px`;
+            naviForm.style.top = `${window.innerHeight / 2 - naviForm.offsetHeight / 2 + window.scrollY}px`;
+        }
+
+        function CreatePatternForm() {
+            switch (formType) {
+                case FORM_TYPES.PATTERN_WEEK:
+                    GELID('title').innerHTML = 'パターン割当';
+                    GELID('pSelect').selectedIndex = programWeek[idx[1]];
+                    break;
+                case FORM_TYPES.PATTERN:
+                    GELID('title').innerHTML = 'パターン編集';
+                    GELID('pSelect').selectedIndex = progNum;
+                    break;
+            }
+            GELID('pSelect').style.width = '100px';
+            GELID('p').style.display = 'block';
+        }
+
+        function CreateTimeForm() {
+            GELID('title').innerHTML = '時刻設定';
+            GELID('t').style.display = 'block';
+            GELID('time').value = timeTable.rows[idx[0]].cells[1].innerHTML;
+            if (GELID('time').value === "--:--:--" || GELID('time').value === "") {
+                GELID('time').value = '00:00:00';
+                GELID('actDelete').style.visibility = 'hidden';
+            }
+            else {
+                GELID('actDelete').style.visibility = 'visible';
+            }
+        }
+
+        function CreateActForm() {
+            GELID('title').innerHTML = '出力設定';
+            GELID('c').style.display = 'block';
+            var i = GetActIndex(timeTable.rows[idx[0]].cells[idx[1]].innerHTML);
+            let el = document.getElementsByName('cout');
+            el.item(i).checked = true;
+        }
+
+        let page = 0;
+        const pageMax = 5;
+        const revlink = '<a href="#" id="rev" style="text-decoration:none">◀ </a>';
+        const fwdlink = '<a href="#" id="fwd" style="text-decoration:none"> ▶</a>';
+
+        function MenuListener() {
+            GELID('fwd').addEventListener('click', function (e) { e.preventDefault(); fwd(); });
+            GELID('rev').addEventListener('click', function (e) { e.preventDefault(); rev(); });
+        }
+
+        function CreateNaviForm() {
+            page = 0;
+            CreateNaviMenu();
+        }
+
+        function CreateNaviMenu() {
+            resetFormElements();
+            GELID('OKCANCEL').style.display = 'none';
+
+            switch (page) {
+                case 0:
+                    GELID('title').innerHTML = revlink + '設定ファイル' + fwdlink;
+                    GELID('f').style.display = 'block';
+                    break;
+                case 1:
+                    GELID('title').innerHTML = revlink + '日時設定' + fwdlink;
+                    const now = new Date();
+                    const year = now.getFullYear();
+                    const month = String(now.getMonth() + 1).padStart(2, '0');
+                    const day = String(now.getDate()).padStart(2, '0');
+                    const hour = String(now.getHours()).padStart(2, '0');
+                    const min = String(now.getMinutes()).padStart(2, '0');
+                    const sec = String(now.getSeconds()).padStart(2, '0');
+                    GELID('M1date').value = `${year}-${month}-${day}`;
+                    GELID('M1time').value = `${hour}:${min}:${sec}`
+                    GELID('M1').style.display = 'block';
+                    break;
+                case 2:
+                    sendMessage("req:500");
+                    GELID('title').innerHTML = revlink + 'NTP設定' + fwdlink;
+                    GELID('M2').style.display = 'block';
+                    break;
+                case 3:
+                    sendMessage("req:600");
+                    sendMessage("req:610");
+                    GELID('title').innerHTML = revlink + 'AP設定(2.4GHz)' + fwdlink;
+                    GELID('M3').style.display = 'block';
+                    break;
+                case 4:
+                    sendMessage("req:700");
+                    sendMessage("req:710");
+                    GELID('title').innerHTML = revlink + 'ST設定(2.4GHz)' + fwdlink;
+                    GELID('M4').style.display = 'block';
+                    break;
+                case 5:
+                    const req = 'req:03';
+                    sendMessage(req);
+                    GELID('title').innerHTML = revlink + '出力状態' + fwdlink;
+                    GELID('M5').style.display = 'block';
+                    break;
+            }
+
+            MenuListener();
+            centerNaviForm();
+        }
+
+        function fwd() {
+            page++;
+            if (page > pageMax) { page = 0; }
+            CreateNaviMenu();
+        }
+
+        function rev() {
+            page--;
+            if (page < 0) { page = pageMax; }
+            CreateNaviMenu();
+        }
+
+        function OKclick() {
+            switch (formType) {
+                case FORM_TYPES.PATTERN_WEEK:
+                    programWeek[idx[1]] = GELID('pSelect').selectedIndex;
+                    progNum = GELID('pSelect').selectedIndex
+                    tableRefresh();
+                    break;
+                case FORM_TYPES.PATTERN:
+                    progNum = GELID('pSelect').selectedIndex;
+                    tableRefresh();
+                    break;
+                case FORM_TYPES.TIME:
+                    if (!isNaN(GELID('time').valueAsNumber)) {
+                        sortOut();
+                        tableRefresh();
+                    } else {
+                        program[progNum][idx[0] - 1].flg = 0;
+                    }
+                    break;
+                case FORM_TYPES.ACTION:
+                    const selected = document.querySelector('input[name="cout"]:checked');
+                    if (selected) {
+                        SetCout(parseInt(selected.value));
+                        tableRefresh();
+                    }
+                    break;
+            }
+
+            naviFormHidden();
+        };
+
+        function CANCELclick() {
+            naviFormHidden();
+        };
+
+        function sortOut() {
+            let array = structuredClone(program[progNum]);
+
+            array[idx[0] - 1].flg = 1;
+            array[idx[0] - 1].time = GetActTimeFormat(GELID('time').value);
+
+            let butting = 0;
+            for (let i = 0; i < TIME_ACT_MAX; i++) {
+                if (array[i].flg != 0 && array[i].time == array[idx[0] - 1].time) {
+                    butting++;
+                }
+            }
+
+            if (butting > 1) {
+                alert('同時刻は登録できません');
+                return false;
+            }
+
+            array.sort(function (a, b) {
+                if (a.flg == 0) { return 1; }
+                if (b.flg == 0) { return -1; }
+                if (a.time > b.time) { return 1; }
+                if (a.time < b.time) { return -1; }
+                return 0;
+            });
+
+            program[progNum] = structuredClone(array);
+
+            return true;
+        }
+
+        function ESPclicked(e) {
+            WSConnect();
+            formType = FORM_TYPES.NAVI;
+            naviFormShow();
+        }
+
+        function headrTableclicked(e) {
+            idx = e.target.id.split("-");
+            e.target.style.background = "lime";
+            formType = FORM_TYPES.PATTERN_WEEK;
+            naviFormShow();
+            tableRefresh();
+        }
+
+        function timeTableclicked(e) {
+            if (e.target.id == 'colIndex') {
+                formType = FORM_TYPES.PATTERN;
+                naviFormShow();
+                tableRefresh();
+                return;
+            }
+
+            idx = e.target.id.split("-");
+
+            if (idx[0] > 0 && idx[1] == 1) {
+                e.target.style.background = "lime";
+                formType = FORM_TYPES.TIME;
+                naviFormShow();
+                return;
+            }
+
+            if (idx[0] > 0 && idx[1] > 1) {
+                e.target.style.background = "lime";
+                formType = FORM_TYPES.ACTION;
+                naviFormShow();
+                return;
+            }
+
+            formType = FORM_TYPES.NAVI;
+            naviFormShow();
+        }
+
+        function CTableclicked(e) {
+            switch (e.target.id) {
+                case 'C1':
+                    console.log('C1');
+                    if (GELID('C1').innerText == GetOutMark('1')) { sendMessage('req:110'); } else { sendMessage('req:111'); }
+                    break;
+                case 'C2':
+                    console.log('C2');
+                    if (GELID('C2').innerText == GetOutMark('1')) { sendMessage('req:120'); } else { sendMessage('req:121'); }
+                    break;
+                case 'C3':
+                    console.log('C3');
+                    if (GELID('C3').innerText == GetOutMark('1')) { sendMessage('req:130'); } else { sendMessage('req:131'); }
+                    break;
+                case 'C4':
+                    console.log('C4');
+                    if (GELID('C4').innerText == GetOutMark('1')) { sendMessage('req:140'); } else { sendMessage('req:141'); }
+                    break;
+                case 'C5':
+                    console.log('C5');
+                    if (GELID('C5').innerText == GetOutMark('1')) { sendMessage('req:150'); } else { sendMessage('req:151'); }
+                    break;
+                case 'C6':
+                    console.log('C6');
+                    if (GELID('C6').innerText == GetOutMark('1')) { sendMessage('req:160'); } else { sendMessage('req:161'); }
+                    break;
+                case 'C7':
+                    console.log('C7');
+                    if (GELID('C7').innerText == GetOutMark('1')) { sendMessage('req:170'); } else { sendMessage('req:171'); }
+                    break;
+                case 'C8':
+                    console.log('C8');
+                    if (GELID('C8').innerText == GetOutMark('1')) { sendMessage('req:180'); } else { sendMessage('req:181'); }
+                    break;
+            }
+            const req = 'req:03';
+            sendMessage(req);
+        }
+
+        function OKclickActDelete() {
+            let array = structuredClone(program[progNum]);
+
+            array[idx[0] - 1].flg = 0;
+
+            array.sort(function (a, b) {
+                if (a.flg == 0) { return 1; }
+                if (b.flg == 0) { return -1; }
+                if (a.time > b.time) { return 1; }
+                if (a.time < b.time) { return -1; }
+                return 0;
+            });
+
+            program[progNum] = structuredClone(array);
+
+            tableRefresh();
+            naviFormHidden();
+        }
+
+        function tableRefresh() {
+            //  headrTable
+            for (let i = 0; i < 7; i++) {
+                let Cell = headrTable.rows[1].cells[i];
+                Cell.textContent = `P${programWeek[i]}`;
+            }
+            //  patternTable
+            if (progNum >= PATTERN_MAX) return;
+
+            Cell = timeTable.rows[0].cells[0];
+            Cell.textContent = "P" + progNum;
+
+            for (let i = 0; i < TIME_ACT_MAX; i++) {
+                if (program[progNum][i].flg != 0) {
+                    Cell = timeTable.rows[i + 1].cells[1];
+                    Cell.textContent = GetTimeFormat(program[progNum][i].time);
+                    Cell = timeTable.rows[i + 1].cells[2];
+                    Cell.textContent = GetOutAct(program[progNum][i].C1);
+                    Cell = timeTable.rows[i + 1].cells[3];
+                    Cell.textContent = GetOutAct(program[progNum][i].C2);
+                    Cell = timeTable.rows[i + 1].cells[4];
+                    Cell.textContent = GetOutAct(program[progNum][i].C3);
+                    Cell = timeTable.rows[i + 1].cells[5];
+                    Cell.textContent = GetOutAct(program[progNum][i].C4);
+                    Cell = timeTable.rows[i + 1].cells[6];
+                    Cell.textContent = GetOutAct(program[progNum][i].C5);
+                    Cell = timeTable.rows[i + 1].cells[7];
+                    Cell.textContent = GetOutAct(program[progNum][i].C6);
+                    Cell = timeTable.rows[i + 1].cells[8];
+                    Cell.textContent = GetOutAct(program[progNum][i].C7);
+                    Cell = timeTable.rows[i + 1].cells[9];
+                    Cell.textContent = GetOutAct(program[progNum][i].C8);
+                }
+                else {
+                    for (let j = 1; j < timeTable.rows[0].cells.length; j++) {
+                        Cell = timeTable.rows[i + 1].cells[j];
+                        Cell.textContent = "";
+                    }
+                }
+            }
+        }
+
+        function GetTimeFormat(time) {
+            const H = parseInt(time / 60 / 60, 10).toString().padStart(2, "0");
+            const M = parseInt(time / 60 % 60, 10).toString().padStart(2, "0");
+            const S = parseInt(time % 60, 10).toString().padStart(2, "0");
+            return `${H}:${M}:${S}`;
+        }
+
+        function GetActTimeFormat(time) {
+            const [h, m, s] = time.split(":").map(part => parseInt(part));
+            return h * 3600 + m * 60 + s;
+        }
+
+        function GetOutAct(act) {
+            switch (act) {
+                case 1: return "PLS";
+                case 2: return "ON";
+                case 3: return "OFF";
+                default: return "";
+            }
+        }
+
+        function GetActIndex(act) {
+            switch (act) {
+                case "PLS": return 1;
+                case "ON": return 2;
+                case "OFF": return 3;
+                default: return 0;
+            }
+        }
+
+        function SetCout(value) {
+            if (idx[1] < 2 || idx[1] > 9)
+                return;
+
+            if (program[progNum][idx[0] - 1].flg == 0)
+                return;
+
+            switch (parseInt(idx[1])) {
+                case 2: program[progNum][idx[0] - 1].C1 = value;
+                    break;
+                case 3: program[progNum][idx[0] - 1].C2 = value;
+                    break;
+                case 4: program[progNum][idx[0] - 1].C3 = value;
+                    break;
+                case 5: program[progNum][idx[0] - 1].C4 = value;
+                    break;
+                case 6: program[progNum][idx[0] - 1].C5 = value;
+                    break;
+                case 7: program[progNum][idx[0] - 1].C6 = value;
+                    break;
+                case 8: program[progNum][idx[0] - 1].C7 = value;
+                    break;
+                case 9: program[progNum][idx[0] - 1].C8 = value;
+                    break;
+            }
+        }
+
+        function CurrentMark() {
+            const espCurrent = GELID('ESPtime').innerText;
+            const date = new Date(espCurrent.substr(0, 10));
+            const week = date.getDay();
+
+            for (let j = 1; j < headrTable.rows[0].cells.length; j++) {
+                let cell = headrTable.rows[0].cells[j];
+                if (week == j - 1) {
+                    cell.style.textDecoration = 'underline';
+                }
+                else {
+                    cell.style.textDecoration = 'none';
+                }
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////
+
+        function Load(file) {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                const xmlString = e.target.result;
+                try {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xmlString, 'application/xml');
+                    const parserError = xmlDoc.querySelector('parsererror');
+
+                    if (parserError) {
+                        console.log("parserError");
+                        return;
+                    }
+
+                    for (let ta = 0; ta < TIME_ACT_MAX; ta++) {
+                        const Act = xmlDoc.getElementsByTagName(`Act${ta}`);
+                        for (let pt = 0; pt < PATTERN_MAX; pt++) {
+                            program[pt][ta].flg = GetXmlElm(Act[pt], 'flg');
+                            program[pt][ta].time = GetXmlElm(Act[pt], 'time');
+                            program[pt][ta].C1 = GetXmlElm(Act[pt], 'C1');
+                            program[pt][ta].C2 = GetXmlElm(Act[pt], 'C2');
+                            program[pt][ta].C3 = GetXmlElm(Act[pt], 'C3');
+                            program[pt][ta].C4 = GetXmlElm(Act[pt], 'C4');
+                            program[pt][ta].C5 = GetXmlElm(Act[pt], 'C5');
+                            program[pt][ta].C6 = GetXmlElm(Act[pt], 'C6');
+                            program[pt][ta].C7 = GetXmlElm(Act[pt], 'C7');
+                            program[pt][ta].C8 = GetXmlElm(Act[pt], 'C8');
+                        }
+                    }
+
+                    const Week = xmlDoc.getElementsByTagName(`Week`);
+                    for (let i = 0; i < 7; i++) {
+                        programWeek[i] = GetXmlElm(Week[0], `${WEEKDAYS[i]}`);
+                    }
+
+                    progNum = 1;
+                    naviFormHidden();
+                    tableRefresh();
+
+                } catch (err) {
+                    console.log(err.message);
+                }
+            };
+
+            reader.onerror = (err) => {
+                console.log(err.message);
+            };
+
+            reader.readAsText(file);
+        }
+
+        function GetXmlElm(elm, tag) {
+            return parseInt(elm.getElementsByTagName(tag)[0].textContent);
+        }
+
+        function Save() {
+            let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+            xml += '<setting>\n';
+
+            for (let i = 0; i < PATTERN_MAX; i++) {
+                xml += `  <P${i}>\n`;
+                for (let j = 0; j < TIME_ACT_MAX; j++) {
+                    xml += `    <Act${j}>`;
+                    xml += `<flg>${program[i][j].flg}</flg>`;
+                    xml += `<time>${program[i][j].time}</time>`;
+                    xml += `<C1>${program[i][j].C1}</C1>`;
+                    xml += `<C2>${program[i][j].C2}</C2>`;
+                    xml += `<C3>${program[i][j].C3}</C3>`;
+                    xml += `<C4>${program[i][j].C4}</C4>`;
+                    xml += `<C5>${program[i][j].C5}</C5>`;
+                    xml += `<C6>${program[i][j].C6}</C6>`;
+                    xml += `<C7>${program[i][j].C7}</C7>`;
+                    xml += `<C8>${program[i][j].C8}</C8>`;
+                    xml += `</Act${j}>\n`;
+                }
+                xml += `  </P${i}>\n`;
+            }
+
+            xml += `  <Week>\n`;
+            for (let i = 0; i < 7; i++) {
+                xml += `    <${WEEKDAYS[i]}>${programWeek[i]}</${WEEKDAYS[i]}>\n`;
+            }
+            xml += `  </Week>\n`;
+
+            xml += '</setting>\n';
+
+            const blob = new Blob([xml], { type: 'text/xml' });
+            const url = window.URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'setting.xml';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+
+            naviFormHidden();
+        }
+
+        function Upload() {
+            if (!window.confirm("設定をアップロードします")) {
+                console.log('Upload Cancel');
+                return;
+            }
+
+            console.log('Upload');
+            const szOfAct = 6;
+            const szOfWeek = 7;
+            let buf = new ArrayBuffer(szOfAct * TIME_ACT_MAX * PATTERN_MAX + szOfWeek);
+            let dv = new DataView(buf);
+
+            for (let i = 0; i < PATTERN_MAX; i++) {
+                for (let j = 0; j < TIME_ACT_MAX; j++) {
+                    let pg = program[i][j];
+                    dv.setUint32(0 + TIME_ACT_MAX * szOfAct * i + szOfAct * j, pg.flg << 24 | pg.time, false);
+                    dv.setUint16(4 + TIME_ACT_MAX * szOfAct * i + szOfAct * j, pg.C1 << 14 | pg.C2 << 12 | pg.C3 << 10 | pg.C4 << 8 | pg.C5 << 6 | pg.C6 << 4 | pg.C7 << 2 | pg.C8, false);
+                }
+            }
+
+            for (let i = 0; i < 7; i++) {
+                dv.setUint8(szOfAct * TIME_ACT_MAX * PATTERN_MAX + i, programWeek[i]);
+            }
+
+            sendMessage(buf);
+            naviFormHidden();
+        }
+
+        function Download() {
+            console.log('Download');
+            const req = 'req:01';
+            sendMessage(req);
+        }
+
+        function DownloadBuf2Schedule(byteArray) {
+            const recvId = 'esp:01';
+            const header = 7;
+            const timeAct = 8;
+            const weekday = 7;
+
+            if (byteArray.length != header + timeAct * TIME_ACT_MAX * PATTERN_MAX + weekday) {
+                console.log('recv len:', byteArray.length);
+                return;
+            }
+
+            for (let i = 0; i < header - 1; i++) {
+                let value = String.fromCharCode(byteArray[i]);
+                if (recvId[i] != value) {
+                    console.log(`recvId fail:${recvId}(${i}):${value}`);
+                    return;
+                }
+            }
+
+            for (let i = 0; i < PATTERN_MAX; i++) {
+                for (let j = 0; j < TIME_ACT_MAX; j++) {
+                    pos = header + timeAct * TIME_ACT_MAX * i + timeAct * j;
+                    program[i][j].flg = byteArray[pos];
+                    program[i][j].time = byteArray[pos + 3] * 256 * 256 + byteArray[pos + 2] * 256 + byteArray[pos + 1];
+                    program[i][j].C1 = 0b11 & (byteArray[pos + 4]);
+                    program[i][j].C2 = 0b11 & (byteArray[pos + 4] >> 2);
+                    program[i][j].C3 = 0b11 & (byteArray[pos + 4] >> 4);
+                    program[i][j].C4 = 0b11 & (byteArray[pos + 4] >> 6);
+                    program[i][j].C5 = 0b11 & (byteArray[pos + 5]);
+                    program[i][j].C6 = 0b11 & (byteArray[pos + 5] >> 2);
+                    program[i][j].C7 = 0b11 & (byteArray[pos + 5] >> 4);
+                    program[i][j].C8 = 0b11 & (byteArray[pos + 5] >> 6);
+                }
+            }
+
+            for (let i = 0; i < 7; i++) {
+                programWeek[i] = byteArray[header + timeAct * TIME_ACT_MAX * PATTERN_MAX + i];
+            }
+
+            progNum = 1;
+            naviFormHidden();
+            tableRefresh();
+        }
+
+        function OKclickESPTimeSet() {
+            const req = "req:02" + formatDateTime(GELID('M1date').value, GELID('M1time').value);
+            sendMessage(req);
+            console.log(`ESPTimeSet ${req}`);
+        }
+
+        function formatDateTime(dateString, timeString) {
+            const [year, month, day] = dateString.split('-');
+            const [hours, min, sec] = timeString.split(':');
+            return `${year}${month}${day}${hours}${min}${sec}`.toString();
+        }
+
+        function OKclickNTPSet() {
+            const req = "req:501" + GELID('M2NTP').value;
+            sendMessage(req);
+            console.log(`NTP Server Set ${req}`);
+        }
+
+        function OKclickAPSet() {
+            const reqSSID = "req:601" + GELID('M3APSSID').value;
+            sendMessage(reqSSID);
+            const reqPASS = "req:611" + GELID('M3APPASS').value;
+            sendMessage(reqPASS);
+            console.log(`AP Set ${reqSSID} ${reqPASS}`);
+        }
+
+        function OKclickSTSet() {
+            const reqSSID = "req:701" + GELID('M4STSSID').value;
+            sendMessage(reqSSID);
+            const reqPASS = "req:711" + GELID('M4STPASS').value;
+            sendMessage(reqPASS);
+            console.log(`ST Set ${reqSSID} ${reqPASS}`);
+        }
+
+        function Copyclick() {
+            copyPattern = GELID('pSelect').selectedIndex;
+            GELID('patternPaste').disabled = false;
+        }
+
+        function Pasteclick() {
+            if (copyPattern == null) {
+                return;
+            }
+
+            program[GELID('pSelect').selectedIndex] = structuredClone(program[copyPattern]);
+        }
+    </script>
+</body>
+
+</html>
