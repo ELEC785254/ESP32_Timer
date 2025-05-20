@@ -2,8 +2,8 @@
 
 Weekly Timer
 
-Channels 8
-ON/OFF/PLS(0.5s)
+Channels 8\
+ON/OFF/PLS(500ms)\
 PROGRAM 32
 STEP 96
 
