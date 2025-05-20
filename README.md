@@ -7,6 +7,6 @@ ON/OFF/PLS(500ms)\
 PROGRAM 32\
 STEP 96\
 
-WiFi\
-AP/ST MODE\
-NTP Sync\
+-WiFi\
++AP/ST MODE\
++NTP Sync\
