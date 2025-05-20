@@ -1,7 +1,6 @@
 # ESP32_Timer
 \
 ## Weekly Timer
-\
 Channels 8\
 ON/OFF/PLS(500ms)\
 PROGRAM 32\
