@@ -4,7 +4,6 @@ Channels 8\
 ON/OFF/PLS(500ms)\
 PROGRAM 32\
 STEP 96\
-\
-WiFi\
+### WiFi
 AP/ST MODE\
 NTP Sync\
