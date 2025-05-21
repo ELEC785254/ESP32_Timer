@@ -7,7 +7,7 @@ STEP 96
 ### WiFi
 AP/ST MODE\
 NTP Sync\
-###partitions:8M with ffat (3MB APP/1.5MB ffat)
+### partitions:8M with ffat (3MB APP/1.5MB ffat)
 # Name,   Type, SubType, Offset,  Size, Flags
 nvs,      data, nvs,     0x9000,  0x5000,
 otadata,  data, ota,     0xe000,  0x2000,
