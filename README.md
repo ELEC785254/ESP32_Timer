@@ -1,6 +1,6 @@
 # ESP32_Timer
 https://youtube.com/shorts/upITopasiKM
-### Weekly Timer
+### Weekly Program Timer
 Channels 8\
 ON/OFF/PLS(500ms)\
 DC MAX:30V/3A\
