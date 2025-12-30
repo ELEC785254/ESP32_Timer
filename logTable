@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>TT-C8W - LogTable</title>
+    <style>
+        #logTable {
+            width: 400px;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+        #logTable th,
+        #logTable td {
+            border: 2px solid #CCCCCC;
+            padding: 2px 2px;
+            text-align: center;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="logTable">
+    <thead>
+      <tr><th>Log File</th><th>Size</th></tr>
+    </thead>
+    <tbody>            
+            <tr><td><a href="/log?file=log-20250929.txt" target="_blank">log-20250929.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250930.txt" target="_blank">log-20250930.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251001.txt" target="_blank">log-20251001.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251002.txt" target="_blank">log-20251002.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251003.txt" target="_blank">log-20251003.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251004.txt" target="_blank">log-20251004.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251005.txt" target="_blank">log-20251005.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251006.txt" target="_blank">log-20251006.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251007.txt" target="_blank">log-20251007.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251008.txt" target="_blank">log-20251008.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251009.txt" target="_blank">log-20251009.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251010.txt" target="_blank">log-20251010.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251011.txt" target="_blank">log-20251011.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251012.txt" target="_blank">log-20251012.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251013.txt" target="_blank">log-20251013.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251014.txt" target="_blank">log-20251014.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251015.txt" target="_blank">log-20251015.txt</a></td><td>5184bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251016.txt" target="_blank">log-20251016.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251017.txt" target="_blank">log-20251017.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251018.txt" target="_blank">log-20251018.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251019.txt" target="_blank">log-20251019.txt</a></td><td>5372bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251020.txt" target="_blank">log-20251020.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251021.txt" target="_blank">log-20251021.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251022.txt" target="_blank">log-20251022.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251023.txt" target="_blank">log-20251023.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251024.txt" target="_blank">log-20251024.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251025.txt" target="_blank">log-20251025.txt</a></td><td>5120bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251026.txt" target="_blank">log-20251026.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251027.txt" target="_blank">log-20251027.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251028.txt" target="_blank">log-20251028.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251029.txt" target="_blank">log-20251029.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251030.txt" target="_blank">log-20251030.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251031.txt" target="_blank">log-20251031.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251101.txt" target="_blank">log-20251101.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251102.txt" target="_blank">log-20251102.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251103.txt" target="_blank">log-20251103.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251104.txt" target="_blank">log-20251104.txt</a></td><td>5398bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251105.txt" target="_blank">log-20251105.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251106.txt" target="_blank">log-20251106.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251107.txt" target="_blank">log-20251107.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251108.txt" target="_blank">log-20251108.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251109.txt" target="_blank">log-20251109.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251110.txt" target="_blank">log-20251110.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251111.txt" target="_blank">log-20251111.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251112.txt" target="_blank">log-20251112.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251113.txt" target="_blank">log-20251113.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251114.txt" target="_blank">log-20251114.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251115.txt" target="_blank">log-20251115.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251116.txt" target="_blank">log-20251116.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251117.txt" target="_blank">log-20251117.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251118.txt" target="_blank">log-20251118.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251119.txt" target="_blank">log-20251119.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251120.txt" target="_blank">log-20251120.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251121.txt" target="_blank">log-20251121.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251122.txt" target="_blank">log-20251122.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251123.txt" target="_blank">log-20251123.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251124.txt" target="_blank">log-20251124.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251125.txt" target="_blank">log-20251125.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251126.txt" target="_blank">log-20251126.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251127.txt" target="_blank">log-20251127.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251128.txt" target="_blank">log-20251128.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251129.txt" target="_blank">log-20251129.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251130.txt" target="_blank">log-20251130.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251201.txt" target="_blank">log-20251201.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251202.txt" target="_blank">log-20251202.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251203.txt" target="_blank">log-20251203.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251204.txt" target="_blank">log-20251204.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251205.txt" target="_blank">log-20251205.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251206.txt" target="_blank">log-20251206.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251207.txt" target="_blank">log-20251207.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251208.txt" target="_blank">log-20251208.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251209.txt" target="_blank">log-20251209.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251210.txt" target="_blank">log-20251210.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251211.txt" target="_blank">log-20251211.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251212.txt" target="_blank">log-20251212.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251213.txt" target="_blank">log-20251213.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251214.txt" target="_blank">log-20251214.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251215.txt" target="_blank">log-20251215.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251216.txt" target="_blank">log-20251216.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251217.txt" target="_blank">log-20251217.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251218.txt" target="_blank">log-20251218.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251219.txt" target="_blank">log-20251219.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251220.txt" target="_blank">log-20251220.txt</a></td><td>5120bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251221.txt" target="_blank">log-20251221.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251222.txt" target="_blank">log-20251222.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251223.txt" target="_blank">log-20251223.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251224.txt" target="_blank">log-20251224.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251225.txt" target="_blank">log-20251225.txt</a></td><td>9723bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251226.txt" target="_blank">log-20251226.txt</a></td><td>4037bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251227.txt" target="_blank">log-20251227.txt</a></td><td>1482bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251228.txt" target="_blank">log-20251228.txt</a></td><td>2050bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251229.txt" target="_blank">log-20251229.txt</a></td><td>8549bytes</td></tr>
+            <tr><td><a href="/log?file=log-20251230.txt" target="_blank">log-20251230.txt</a></td><td>5156bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250814.txt" target="_blank">log-20250814.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250815.txt" target="_blank">log-20250815.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250816.txt" target="_blank">log-20250816.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250817.txt" target="_blank">log-20250817.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250818.txt" target="_blank">log-20250818.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250819.txt" target="_blank">log-20250819.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250820.txt" target="_blank">log-20250820.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250821.txt" target="_blank">log-20250821.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250822.txt" target="_blank">log-20250822.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250823.txt" target="_blank">log-20250823.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250824.txt" target="_blank">log-20250824.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250825.txt" target="_blank">log-20250825.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250826.txt" target="_blank">log-20250826.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250827.txt" target="_blank">log-20250827.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250828.txt" target="_blank">log-20250828.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250829.txt" target="_blank">log-20250829.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250830.txt" target="_blank">log-20250830.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250831.txt" target="_blank">log-20250831.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250901.txt" target="_blank">log-20250901.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250902.txt" target="_blank">log-20250902.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250903.txt" target="_blank">log-20250903.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250904.txt" target="_blank">log-20250904.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250905.txt" target="_blank">log-20250905.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250906.txt" target="_blank">log-20250906.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250907.txt" target="_blank">log-20250907.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250908.txt" target="_blank">log-20250908.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250909.txt" target="_blank">log-20250909.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250910.txt" target="_blank">log-20250910.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250911.txt" target="_blank">log-20250911.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250912.txt" target="_blank">log-20250912.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250913.txt" target="_blank">log-20250913.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250914.txt" target="_blank">log-20250914.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250915.txt" target="_blank">log-20250915.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250916.txt" target="_blank">log-20250916.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250917.txt" target="_blank">log-20250917.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250918.txt" target="_blank">log-20250918.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250919.txt" target="_blank">log-20250919.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250920.txt" target="_blank">log-20250920.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250921.txt" target="_blank">log-20250921.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250922.txt" target="_blank">log-20250922.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250923.txt" target="_blank">log-20250923.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250924.txt" target="_blank">log-20250924.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250925.txt" target="_blank">log-20250925.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250926.txt" target="_blank">log-20250926.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250927.txt" target="_blank">log-20250927.txt</a></td><td>5152bytes</td></tr>
+            <tr><td><a href="/log?file=log-20250928.txt" target="_blank">log-20250928.txt</a></td><td>5152bytes</td></tr>
+    </tbody>
+    </table>
+    <script>
+    const table = document.getElementById('logTable');
+    const headers = table.querySelectorAll('th');
+
+    function sortColumn(header, index, initialDirection = 'asc') {
+        const rows = Array.from(table.querySelectorAll('tbody tr'));
+        const isAsc = header.classList.contains('asc') ? !header.classList.contains('desc') : (initialDirection === 'asc');
+
+        header.classList.toggle('asc', isAsc);
+        header.classList.toggle('desc', !isAsc);
+
+        headers.forEach(h => {
+            if (h !== header) h.classList.remove('asc', 'desc');
+        });
+
+        rows.sort((a, b) => {
+            const aText = a.children[index].textContent.trim();
+            const bText = b.children[index].textContent.trim();
+            const aVal = isNaN(aText) ? aText : Number(aText);
+            const bVal = isNaN(bText) ? bText : Number(bText);
+
+            return isAsc ? (aVal > bVal ? 1 : -1) : (aVal < bVal ? 1 : -1);
+        });
+
+        rows.forEach(row => table.querySelector('tbody').appendChild(row));
+    }
+
+    window.addEventListener('load', () => {
+        const defaultColumnIndex = 0;
+        const defaultDirection = 'desc'; // 'asc' or 'desc'
+
+        const defaultHeader = headers[defaultColumnIndex];
+        if (defaultHeader) {
+            sortColumn(defaultHeader, defaultColumnIndex, defaultDirection);
+        }
+    });
+    </script>
+</body>
+
+</html>
