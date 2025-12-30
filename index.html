@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<!-- 2025/05/14 ver1.0.2 -->
+<!-- 2025/12/30 ver1.0.3 -->
 
 <head>
     <meta charset="utf-8">
@@ -317,6 +317,10 @@
                 </tbody>
             </table>
         </DIV>
+        <DIV id="M6">
+            <a href="/system" target="_blank">System</a><BR>
+            <a href="/log" target="_blank">Log</a><BR>
+        </DIV>
         <BR>
         <DIV id="OKCANCEL">
             <input type="button" value="OK" style="width:100px;" onClick="OKclick()" />
@@ -621,7 +625,7 @@
         }
 
         function resetFormElements() {
-            ['p', 't', 'c', 'f', 'M1', 'M2', 'M3', 'M4', 'M5'].forEach(id => {
+            ['p', 't', 'c', 'f', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6'].forEach(id => {
                 GELID(id).style.display = "none";
             });
             GELID('OKCANCEL').style.display = 'block';
@@ -669,7 +673,7 @@
         }
 
         let page = 0;
-        const pageMax = 5;
+        const pageMax = 6;
         const revlink = '<a href="#" id="rev" style="text-decoration:none">◀ </a>';
         const fwdlink = '<a href="#" id="fwd" style="text-decoration:none"> ▶</a>';
 
@@ -727,6 +731,10 @@
                     sendMessage(req);
                     GELID('title').innerHTML = revlink + '出力状態' + fwdlink;
                     GELID('M5').style.display = 'block';
+                    break;
+                case 6:
+                    GELID('title').innerHTML = revlink + 'システム' + fwdlink;
+                    GELID('M6').style.display = 'block';
                     break;
             }
 
@@ -1011,10 +1019,14 @@
             }
         }
 
-        function CurrentMark() {
+        function GetESPDay() {
             const espCurrent = GELID('ESPtime').innerText;
             const date = new Date(espCurrent.substr(0, 10));
-            const week = date.getDay();
+            return date.getDay();
+        }
+
+        function CurrentMark() {
+            const week = GetESPDay();
 
             for (let j = 1; j < headrTable.rows[0].cells.length; j++) {
                 let cell = headrTable.rows[0].cells[j];
@@ -1203,7 +1215,7 @@
                 programWeek[i] = byteArray[header + timeAct * TIME_ACT_MAX * PATTERN_MAX + i];
             }
 
-            progNum = 1;
+            progNum = programWeek[GetESPDay()];
             naviFormHidden();
             tableRefresh();
         }
