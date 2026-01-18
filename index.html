@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<!-- 2025/12/30 ver1.0.3 -->
+<!-- 2026/01/18 ver1.0.5 -->
 
 <head>
     <meta charset="utf-8">
@@ -199,7 +199,8 @@
         <BR>
         <DIV id="p">
             <input id="patternCopy" type="button" value="Copy" style="width:100px;" onClick="Copyclick()">
-            <input id="patternPaste" type="button" value="Paste" style="width:100px;" disabled onClick="Pasteclick()"><BR>
+            <input id="patternPaste" type="button" value="Paste" style="width:100px;" onClick="Pasteclick()"
+                disabled><BR>
             <select id="pSelect"></select>
         </DIV>
         <DIV id="t">
@@ -316,9 +317,10 @@
                 </tbody>
             </table>
         </DIV>
-        <DIV id="M6">
+        <DIV id="M6" style="display: none;">
             <a href="/system" target="_blank">System</a><BR>
-            <a href="/log" target="_blank">Log</a><BR>
+            <a href="/program" target="_blank">Program</a><BR>
+            <a href="/logTable" target="_blank">Log</a><BR>
         </DIV>
         <BR>
         <DIV id="OKCANCEL">
@@ -436,7 +438,7 @@
             };
 
             ws.onerror = (error) => {
-                console.log(event.message);
+                console.error('WebSocket error:', error);
             };
         }
 
@@ -862,42 +864,19 @@
         }
 
         function CTableclicked(e) {
-            switch (e.target.id) {
-                case 'C1':
-                    console.log('C1');
-                    if (GELID('C1').innerText == GetOutMark('1')) { sendMessage('req:110'); } else { sendMessage('req:111'); }
-                    break;
-                case 'C2':
-                    console.log('C2');
-                    if (GELID('C2').innerText == GetOutMark('1')) { sendMessage('req:120'); } else { sendMessage('req:121'); }
-                    break;
-                case 'C3':
-                    console.log('C3');
-                    if (GELID('C3').innerText == GetOutMark('1')) { sendMessage('req:130'); } else { sendMessage('req:131'); }
-                    break;
-                case 'C4':
-                    console.log('C4');
-                    if (GELID('C4').innerText == GetOutMark('1')) { sendMessage('req:140'); } else { sendMessage('req:141'); }
-                    break;
-                case 'C5':
-                    console.log('C5');
-                    if (GELID('C5').innerText == GetOutMark('1')) { sendMessage('req:150'); } else { sendMessage('req:151'); }
-                    break;
-                case 'C6':
-                    console.log('C6');
-                    if (GELID('C6').innerText == GetOutMark('1')) { sendMessage('req:160'); } else { sendMessage('req:161'); }
-                    break;
-                case 'C7':
-                    console.log('C7');
-                    if (GELID('C7').innerText == GetOutMark('1')) { sendMessage('req:170'); } else { sendMessage('req:171'); }
-                    break;
-                case 'C8':
-                    console.log('C8');
-                    if (GELID('C8').innerText == GetOutMark('1')) { sendMessage('req:180'); } else { sendMessage('req:181'); }
-                    break;
-            }
-            const req = 'req:03';
-            sendMessage(req);
+            const reqCmdCout = 100;
+            const id = e.target.id;
+            const num = id.slice(1);
+
+            console.log(id);
+
+            const base = reqCmdCout + Number(num) * 10;
+            const reqCode = GELID(id).innerText === GetOutMark('1')
+                ? `req:${base}`
+                : `req:${base + 1}`;
+
+            sendMessage(reqCode);
+            sendMessage('req:03');
         }
 
         function OKclickActDelete() {
@@ -920,43 +899,30 @@
         }
 
         function tableRefresh() {
-            //  headrTable
+            const headerRow = headrTable.rows[1];
             for (let i = 0; i < 7; i++) {
-                let Cell = headrTable.rows[1].cells[i];
-                Cell.textContent = `P${programWeek[i]}`;
+                headerRow.cells[i].textContent = `P${programWeek[i]}`;
             }
-            //  patternTable
+
             if (progNum >= PATTERN_MAX) return;
 
-            Cell = timeTable.rows[0].cells[0];
-            Cell.textContent = "P" + progNum;
+            timeTable.rows[0].cells[0].textContent = `P${progNum}`;
 
             for (let i = 0; i < TIME_ACT_MAX; i++) {
-                if (program[progNum][i].flg != 0) {
-                    Cell = timeTable.rows[i + 1].cells[1];
-                    Cell.textContent = GetTimeFormat(program[progNum][i].time);
-                    Cell = timeTable.rows[i + 1].cells[2];
-                    Cell.textContent = GetOutAct(program[progNum][i].C1);
-                    Cell = timeTable.rows[i + 1].cells[3];
-                    Cell.textContent = GetOutAct(program[progNum][i].C2);
-                    Cell = timeTable.rows[i + 1].cells[4];
-                    Cell.textContent = GetOutAct(program[progNum][i].C3);
-                    Cell = timeTable.rows[i + 1].cells[5];
-                    Cell.textContent = GetOutAct(program[progNum][i].C4);
-                    Cell = timeTable.rows[i + 1].cells[6];
-                    Cell.textContent = GetOutAct(program[progNum][i].C5);
-                    Cell = timeTable.rows[i + 1].cells[7];
-                    Cell.textContent = GetOutAct(program[progNum][i].C6);
-                    Cell = timeTable.rows[i + 1].cells[8];
-                    Cell.textContent = GetOutAct(program[progNum][i].C7);
-                    Cell = timeTable.rows[i + 1].cells[9];
-                    Cell.textContent = GetOutAct(program[progNum][i].C8);
-                }
-                else {
-                    for (let j = 1; j < timeTable.rows[0].cells.length; j++) {
-                        Cell = timeTable.rows[i + 1].cells[j];
-                        Cell.textContent = "";
+                const row = timeTable.rows[i + 1];
+                const act = program[progNum][i];
+
+                if (act.flg === 0) {
+                    for (let j = 1; j < row.cells.length; j++) {
+                        row.cells[j].textContent = "";
                     }
+                    continue;
+                }
+
+                row.cells[1].textContent = GetTimeFormat(act.time);
+
+                for (let ch = 1; ch <= 8; ch++) {
+                    row.cells[ch + 1].textContent = GetOutAct(act[`C${ch}`]);
                 }
             }
         }
@@ -1020,7 +986,7 @@
 
         function GetESPDay() {
             const espCurrent = GELID('ESPtime').innerText;
-            const date = new Date(espCurrent.substr(0, 10));
+            const date = new Date(espCurrent.slice(0, 10));
             return date.getDay();
         }
 
@@ -1269,5 +1235,3 @@
 </body>
 
 </html>
-
-
